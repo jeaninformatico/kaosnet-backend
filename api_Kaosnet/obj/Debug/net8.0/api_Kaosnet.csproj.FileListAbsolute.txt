@@ -91,6 +91,7 @@ C:\Users\usuario\source\repos\api_Kaosnet\api_Kaosnet\obj\Debug\net8.0\api_Kaosn
 C:\Users\usuario\source\repos\api_Kaosnet\api_Kaosnet\obj\Debug\net8.0\api_Kaosnet.csproj.CoreCompileInputs.cache
 C:\Users\usuario\source\repos\api_Kaosnet\api_Kaosnet\obj\Debug\net8.0\api_Kaosnet.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\usuario\source\repos\api_Kaosnet\api_Kaosnet\obj\Debug\net8.0\api_Kaosnet.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\usuario\source\repos\api_Kaosnet\api_Kaosnet\obj\Debug\net8.0\api_Kaosnet.sourcelink.json
 C:\Users\usuario\source\repos\api_Kaosnet\api_Kaosnet\obj\Debug\net8.0\rjimswa.dswa.cache.json
 C:\Users\usuario\source\repos\api_Kaosnet\api_Kaosnet\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
 C:\Users\usuario\source\repos\api_Kaosnet\api_Kaosnet\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json

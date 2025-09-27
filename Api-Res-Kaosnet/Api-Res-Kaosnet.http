@@ -1,0 +1,6 @@
+@Api_Res_Kaosnet_HostAddress = http://localhost:5051
+
+GET {{Api_Res_Kaosnet_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

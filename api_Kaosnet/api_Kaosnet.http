@@ -1,6 +1,0 @@
-@api_Kaosnet_HostAddress = http://localhost:5148
-
-GET {{api_Kaosnet_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

@@ -11,10 +11,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("1df925eb-be4d-4986-8a00-4fdbc9ce2472")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("Api-Kaos-Net")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d52b5c13d330429f8c510c7391d59a61572f41a1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+35944ae98ae41226720c4f92cc9b48825bf45449")]
 [assembly: System.Reflection.AssemblyProductAttribute("Api-Kaos-Net")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Api-Kaos-Net")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

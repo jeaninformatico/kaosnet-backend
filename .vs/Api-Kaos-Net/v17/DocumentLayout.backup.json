@@ -1,12 +1,7 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\usuario\\Downloads\\Kaos net Backend\\kaosnet-backend\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{C1BDD698-0717-4CFC-AEFF-5184A728EBD2}|Api-Kaos-Net\\Api-Kaos-Net.csproj|c:\\users\\usuario\\downloads\\kaos net backend\\kaosnet-backend\\api-kaos-net\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{C1BDD698-0717-4CFC-AEFF-5184A728EBD2}|Api-Kaos-Net\\Api-Kaos-Net.csproj|solutionrelative:api-kaos-net\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
-    }
-  ],
+  "WorkspaceRootPath": "C:\\Users\\jeffe\\Documents\\kaosnet-backend\\",
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -14,20 +9,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": -1,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Dockerfile",
-              "DocumentMoniker": "C:\\Users\\usuario\\Downloads\\Kaos net Backend\\kaosnet-backend\\Api-Kaos-Net\\Dockerfile",
-              "RelativeDocumentMoniker": "Api-Kaos-Net\\Dockerfile",
-              "ToolTip": "C:\\Users\\usuario\\Downloads\\Kaos net Backend\\kaosnet-backend\\Api-Kaos-Net\\Dockerfile",
-              "RelativeToolTip": "Api-Kaos-Net\\Dockerfile",
-              "ViewState": "AgIAABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-10-02T14:45:42.265Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             }
           ]
         }

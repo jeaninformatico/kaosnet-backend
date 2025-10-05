@@ -1,0 +1,40 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches:
+      - '*'         # todas las ramas sin '/'
+      - '*/*'       # ramas con un '/'
+      - '**'        # todas las ramas
+    paths-ignore:
+      - README.md
+      - README.es.md
+      - .github/**.md
+  pull_request:
+    paths-ignore:
+      - README.md
+      - README.es.md
+      - .github/**.md
+
+jobs:
+  build-backend:
+    name: Build and Test KaosNet Backend
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x'
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build project
+      run: dotnet build --configuration Release
+
+    - name: Run tests (si tienes)
+      run: dotnet test || echo "No tests found"

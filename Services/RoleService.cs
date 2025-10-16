@@ -1,16 +1,16 @@
-﻿using Api_Kaos_Net.Data;
 using Api_Kaos_Net.DTO;
 using Api_Kaos_Net.Interfaces;
-using Api_Kaos_Net.Models;
 using Microsoft.EntityFrameworkCore;
+using KaosNetApi.Data;
+using KaosNetApi.Models;
 
 namespace Api_Kaos_Net.Services
 {
     public class RoleService : IRoleService
     {
-        private readonly KaosnetDbContext _context;
+        private readonly KaosNetDbContext _context;
 
-        public RoleService(KaosnetDbContext context)
+        public RoleService(KaosNetDbContext context)
         {
             _context = context;
         }
@@ -45,7 +45,7 @@ namespace Api_Kaos_Net.Services
             };
         }
 
-        public async Task<RoleDto> CreateAsync(RoleDto dto)
+        public async Task<RoleDto> CreateAsync(RoleCreateDto dto)
         {
             var role = new Role
             {
@@ -59,8 +59,15 @@ namespace Api_Kaos_Net.Services
             _context.Roles.Add(role);
             await _context.SaveChangesAsync();
 
-            dto.RoleId = role.RoleId;
-            return dto;
+            return new RoleDto
+            {
+                RoleId = role.RoleId,
+                RoleName = role.RoleName,
+                RoleDescription = role.RoleDescription,
+                RoleStatus = role.RoleStatus,
+                IsActive = role.IsActive == 1,
+                Idsession = role.Idsession
+            };
         }
 
         public async Task<bool> UpdateAsync(int id, RoleDto dto)

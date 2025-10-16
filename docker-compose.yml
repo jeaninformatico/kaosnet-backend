@@ -1,20 +1,30 @@
 version: '3.8'
-services:
-  api:
-    build: .
-    ports:
-      - "5079:80"
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__DefaultConnection=Server=db;Database=kaosnetdb;User=root;Password=clave123;
-    depends_on:
-      - db
 
-  db:
-    image: mariadb:11
+services:
+  kaosnetapi:
+    image: kaosnetapi:latest
+    build:
+      context: .
+      dockerfile: docker/production.Dockerfile
+    ports:
+      - "5030:5030"
+    environment:
+      - ConnectionStrings__KaosNetDb=${KAOSNET_DB_CONNECTION}
+      - ASPNETCORE_URLS=http://+:5030
+
+  mariadb:
+    image: mariadb:11.4
+    container_name: kaosnet-mariadb
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: clave123
-      MYSQL_DATABASE: kaosnetdb
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: kaosnet
+      MYSQL_USER: kaosnet
+      MYSQL_PASSWORD: KaosPass123
     ports:
-      - "3306:3306"
+      - "3307:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql
+
+volumes:
+  mariadb_data:

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Api_Kaos_Net.Models;
+namespace KaosNetApi.Models;
 
 public partial class Password
 {

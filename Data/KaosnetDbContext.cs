@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using Api_Kaos_Net.Models;
+using KaosNetApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Pomelo.EntityFrameworkCore.MySql.Scaffolding.Internal;
 
-namespace Api_Kaos_Net.Data;
+namespace KaosNetApi.Data;
 
-public partial class KaosnetDbContext : DbContext
+public partial class KaosNetDbContext : DbContext
 {
-    public KaosnetDbContext()
+    public KaosNetDbContext()
     {
     }
 
-    public KaosnetDbContext(DbContextOptions<KaosnetDbContext> options)
+    public KaosNetDbContext(DbContextOptions<KaosNetDbContext> options)
         : base(options)
     {
     }
@@ -45,7 +45,6 @@ public partial class KaosnetDbContext : DbContext
 
     public virtual DbSet<View> Views { get; set; }
 
-    
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

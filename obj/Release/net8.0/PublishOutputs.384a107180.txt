@@ -1,0 +1,17 @@
+C:\Users\jeffe\Documents\KaosNetApi\bin\Release\net8.0\publish\KaosNetApi.exe
+C:\Users\jeffe\Documents\KaosNetApi\bin\Release\net8.0\publish\appsettings.Development.json
+C:\Users\jeffe\Documents\KaosNetApi\bin\Release\net8.0\publish\appsettings.json
+C:\Users\jeffe\Documents\KaosNetApi\bin\Release\net8.0\publish\KaosNetApi.dll
+C:\Users\jeffe\Documents\KaosNetApi\bin\Release\net8.0\publish\KaosNetApi.runtimeconfig.json
+C:\Users\jeffe\Documents\KaosNetApi\bin\Release\net8.0\publish\KaosNetApi.pdb
+C:\Users\jeffe\Documents\KaosNetApi\bin\Release\net8.0\publish\Microsoft.AspNetCore.OpenApi.dll
+C:\Users\jeffe\Documents\KaosNetApi\bin\Release\net8.0\publish\Microsoft.EntityFrameworkCore.dll
+C:\Users\jeffe\Documents\KaosNetApi\bin\Release\net8.0\publish\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\jeffe\Documents\KaosNetApi\bin\Release\net8.0\publish\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\jeffe\Documents\KaosNetApi\bin\Release\net8.0\publish\Microsoft.OpenApi.dll
+C:\Users\jeffe\Documents\KaosNetApi\bin\Release\net8.0\publish\MySqlConnector.dll
+C:\Users\jeffe\Documents\KaosNetApi\bin\Release\net8.0\publish\Pomelo.EntityFrameworkCore.MySql.dll
+C:\Users\jeffe\Documents\KaosNetApi\bin\Release\net8.0\publish\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\jeffe\Documents\KaosNetApi\bin\Release\net8.0\publish\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\jeffe\Documents\KaosNetApi\bin\Release\net8.0\publish\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\jeffe\Documents\KaosNetApi\bin\Release\net8.0\publish\KaosNetApi.deps.json

@@ -1,55 +1,88 @@
-﻿using Api_Kaos_Net.Data;
-using Api_Kaos_Net.Interfaces;
-using Api_Kaos_Net.Services; // Asegúrate de tener este using
+using KaosNetApi.Data;
 using Microsoft.EntityFrameworkCore;
+using Api_Kaos_Net.Interfaces;
+using Api_Kaos_Net.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// 🔌 Configuración de la cadena de conexión desde appsettings.json
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-var serverVersion = ServerVersion.Parse("11.4.7-mariadb");
+// Cargar variables de entorno
+builder.Configuration.AddEnvironmentVariables();
 
-// 🧱 Inyección del DbContext con MariaDB
-builder.Services.AddDbContext<KaosnetDbContext>(options =>
-    options.UseMySql(connectionString, serverVersion));
+// Configurar URL de escucha
+builder.WebHost.UseUrls(builder.Configuration["ASPNETCORE_URLS"] ?? "http://+:5030");
 
-// 🧩 Registro del servicio para Role
+// Obtener cadena de conexión desde variable de entorno
+var connectionString = builder.Configuration["ConnectionStrings:KaosNetDb"];
+// Registrar DbContext con MySQL/MariaDB
+builder.Services.AddDbContext<KaosNetDbContext>(options =>
+    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
+);
+
+// Registrar servicios
 builder.Services.AddScoped<IRoleService, RoleService>();
-builder.Services.AddScoped<IRoleAccessService, RoleAccessService>();
-builder.Services.AddScoped<IViewService, ViewService>();
-builder.Services.AddScoped<IModuleService, ModuleService>();
-builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddScoped<ISubscriptionPlanService, SubscriptionPlanService>();
-builder.Services.AddScoped<ISubscriptionPlanAccountService, SubscriptionPlanAccountService>();
-builder.Services.AddScoped<IStreamingTypeService, StreamingTypeService>();
-builder.Services.AddScoped<IStreamingAccountService, StreamingAccountService>();
-builder.Services.AddScoped<ISalesAccountService, SalesAccountService>();
-builder.Services.AddScoped<IPasswordService, PasswordService>();
-builder.Services.AddScoped<ICustomerService, CustomerService>();
-builder.Services.AddScoped<ICurrencyService, CurrencyService>();
-builder.Services.AddScoped<IConversionRateService, ConversionRateService>();
 
-
-
-
-
-
-// Add services to the container.
-builder.Services.AddControllers();
+// Configurar Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddControllers();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+// Activar Swagger como página principal
+app.UseSwagger();
+app.UseSwaggerUI(c =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "KaosNet API V1");
+    c.RoutePrefix = "";
+});
 
+// Redirección HTTPS (opcional en Docker)
 app.UseHttpsRedirection();
-app.UseAuthorization();
-app.MapControllers();
 
+// Endpoint de prueba de conexión a la base de datos
+app.MapGet("/test-db", async (KaosNetDbContext db) =>
+{
+    try
+    {
+        var canConnect = await db.Database.CanConnectAsync();
+        return canConnect
+            ? Results.Ok(new { message = "✅ Conectado correctamente a la base de datos." })
+            : Results.Problem("❌ No se pudo conectar a la base de datos.");
+    }
+    catch (Exception ex)
+    {
+        return Results.Problem($"Error: {ex.Message}");
+    }
+})
+.WithName("TestDatabase")
+.WithOpenApi();
+
+// Endpoint de ejemplo: pronóstico del clima
+app.MapGet("/weatherforecast", () =>
+{
+    var summaries = new[]
+    {
+        "Freezing","Bracing","Chilly","Cool","Mild",
+        "Warm","Balmy","Hot","Sweltering","Scorching"
+    };
+    var forecast = Enumerable.Range(1,5).Select(index =>
+        new WeatherForecast(
+            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
+            Random.Shared.Next(-20,55),
+            summaries[Random.Shared.Next(summaries.Length)]
+        )
+    ).ToArray();
+    return forecast;
+})
+.WithName("GetWeatherForecast")
+.WithOpenApi();
+
+// Mapear controladores
+app.MapControllers();
 app.Run();
+
+// Registro simple para el endpoint de clima
+record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
+{
+    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+}
